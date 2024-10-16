@@ -3,6 +3,7 @@ import loginSignupImage from "../assest/login-animation.gif";
 import { BiHide, BiShow } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import { ImagetoBase64 } from "../utility/imagetoBase64";
+import { toast } from "react-hot-toast";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -43,15 +44,30 @@ const Signup = () => {
       };
     });
   };
-  const handleSubmit = (e) => {
+  //console.log(process.env.REACT_APP_SERVER_DOMIN);
+  const handleSubmit = async (e) => {
     //This page will not refresh
     e.preventDefault();
     const { firstName, lastName, email, password, confirmPassword } = data;
     if (firstName && lastName && email && password && confirmPassword) {
       if (password === confirmPassword) {
-        //I will send the data to the backend
-        alert("Successful");
-        navigate("/login");
+        const fetchData = await fetch(
+          `${process.env.REACT_APP_SERVER_DOMIN}/signup`,
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        );
+        const dataRes = await fetchData.json();
+        console.log(dataRes);
+        //alert(dataRes.message);
+        toast(dataRes.message);
+        if (dataRes.alert) {
+          navigate("/login");
+        }
       } else {
         alert("Password and confirmPassword not equal");
       }
