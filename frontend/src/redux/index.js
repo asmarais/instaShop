@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-//this is how to import the default module name from the file
 import userSliceReducer from "./userSlice";
+import productSlideReducer from "./productSlice";
 
 export const store = configureStore({
-  reducer: { user: userSliceReducer },
+  reducer: {
+    user: userSliceReducer,
+    product: productSlideReducer,
+  },
 });
