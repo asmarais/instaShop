@@ -94,16 +94,10 @@ const Newproduct = () => {
           value={data.category}
         >
           <option value={"other"}>select category</option>
-          <option value={"fruits"}>Fruits</option>
-          <option value={"vegetable"}>Vegetable</option>
-          <option value={"icream"}>Icream</option>
-          <option value={"dosa"}>Dosa</option>
-          <option value={"pizza"}>Pizza</option>
-          <option value={"rice"}>rice</option>
-          <option value={"cake"}>Cake</option>
-          <option value={"burger"}>Burger</option>
-          <option value={"panner"}>Panner</option>
-          <option value={"sandwich"}>Sandwich</option>
+          <option value={"mignardise"}>mignardise</option>
+          <option value={"salé"}>Salé</option>
+          <option value={"dattes farcie"}>Date farcie</option>
+          <option value={"hlou"}>hlou</option>
         </select>
 
         <label htmlFor="image">
